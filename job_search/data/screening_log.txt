@@ -1,0 +1,45 @@
+INCLUDE dadavidson Research Associate Consumer (NYC/Boston onsite) lever 7585d472 "Recent grad or up to 1 year of experience..."
+INCLUDE chronograph PE Data Ops Analyst Brooklyn GH 5086773007 no years; "Internships or experience in the finance industry (nice to have)"
+INCLUDE BofA ER REITs Analyst/Associate NYC "0-3 years working experience" $110-175K
+INCLUDE United Rentals Treasury Analyst Stamford LI 4467930869 "0-2 years of analytical experience in a corporate finance or accounting function" caveat GL coding/SOX
+OUT iCapital Structured Inv Distribution Analyst - 50+ outbound calls/day appointment setting, hourly non-exempt (red flag cold-calling)
+OUT Point72 Macro&Alt Trade Support - zero to two yrs BUT requires hands-on experience w/ affirmation platforms + reconciliation
+OUT Point72 SIP Associate 2+; Tech BA coding; LionTree 2+; Octus 2-6; Robinhood 4-6; ClearStreet 2+ & active S7; Kalshi python/sql; Atomic 2-5 cold outbound; S&P CREDit requires current penultimate-year student; TD 3-5; Ares 1-3
+OUT Tapestry Analyst Credit - trade credit/AR collections + journal entries (accounting)
+OUT SKG Team at Barnum Financial (MassMutual agency) Investment Ops Associate - insurance agency "protection planning" red flag
+CHECK Pace Budget Analyst White Plains - LinkedIn text lacks requirements
+MAYBE Libra Solutions (Probate Advance) Underwriter Rye Brook in-person $85-95K + incentive; no years; prefers probate/paralegal background
+OUT DESRI start Summer/Fall 2027; BMO ER requires experience; Hedgeye "future opportunity - not an active opening"; Mission Staffing PE requires relevant IB/PE experience; Oakleaf FP&A requires FP&A experience; Atlas FX Settlements requires FX settlement experience; MS Strategic Inv 1-2+; Biz2Credit 3+; GE Vernova FS Analyst posting text in German / unclear
+OUT Pace Budget Analyst - full posting on Pace site: '1-2 years of financial and/or budgetary experience'
+INCLUDE Booking Holdings Analyst ERM NYC hybrid 2 days $79.2-96.8K LI 4460686872 no years; "Coursework or exposure to risk management concepts..."
+GRAY Aon Investment Consulting Performance Analyst Norwalk CT hybrid LI 4472223007 "0-1+ years of experience in the Investment space." caveat reconciliation of returns; Norwalk ~45-50 min
+OUT SMBC Trust PF Credit 2+; Engelhart treasury requires commodity trading experience; Macquarie ECS 1-3; MetLife/PineBridge Multi Asset requires Python; TransUnion Argus requires SQL
+OUT(redflag) EQT Corp Compliance Specialist remote excludes NY; IMA IMACC Analyst insurance certificate review not finance, $41-58K; ClearPlan requires expert EVMS experience
+GRAY NTT Global Data Centers Associate Specialist, Treasury REMOTE US $73.5-89.6K builtin 11254155 "Entry-level experience in treasury, finance, accounting, banking operations, or a related field." caveat: wording lists experience under REQUIRED; some reconciliations. need original link
+OUT Precision AQ Client Finance Analyst I = project accounting/invoicing/GL recs; Matrix QC AML experienced
+MAYBE Newmark Analyst, Financial (builtin says remote) $65-72K no years; loan servicing asset mgmt; verify location
+INCLUDE BBH Alternative Credit Analyst NYC $85-100K builtin 10934845 "No prior experience is necessary..." + "Up to 4 years of relevant experience is helpful but not required"
+INCLUDE Glenmede Management Associate, Portfolio Management NYC hybrid 3d $78-94K builtin 11464670 "0-4 years of experience in an investment environment."
+INCLUDE Buckingham Research Group Associate Analyst NYC builtin 11460208 "0-3 years of Equity Research or relevant sector experience" no salary
+INCLUDE Five Rings Recent Graduate Trading Assistant NYC 100% in office $100K GH fiveringsllc/5414190008 "0-2 years of relevant experience preferred; recent graduates encouraged to apply." caveat order entry
+INCLUDE PJT Partners Analyst - Compliance NYC (280 Park Ave) $75-85K builtin 11344109 no years stated; bachelor's + skills only
+GRAY Aquarian Holdings Client Services Analyst NYC $80-105K builtin 11636506 "Internship experience or up to 1–2 years of experience in asset management, investment banking, consulting, or a related client‑facing or analytical role." caveat internship ideal
+OUT Cantina Labs FA = AP workflow (accounting); ICAP Market Surveillance requires prior compliance experience; Healthpeak Investments Analyst location unverifiable (Builtin geocode NYC default; aggregator says Albany; HQ Denver)
+OUT Augustus Fin Crimes requires data/AI implementation experience; WF IB PCM 6+ months; Citadel Ashler prior IB/PE; Brookfield Infra AI requires IB/infra experience
+INCLUDE PIMCO Account Analyst, US GWM Strategic Accounts NYC $90-100K builtin 11217416 no years; licenses within 90 days
+OUT Volta corp dev experience essential; NYC District Council Delinquency Analyst = collections/records, requires record-keeping experience; Ferguson Credit Trainee hourly + AR collections + relocation
+INCLUDE TD Securities Analyst - Corporate Banking - Industrials NYC $110-125K LI 4476325203 "0-2 years of related experience"
+INCLUDE Jefferies IB Analyst SEAA NYC $110-125K LI 4466887209 "0-1 years of experience" caveat lists financial-database experience
+INCLUDE VRC Analyst, Portfolio Valuation NYC LI 4450372104 "0 to 2 years’ of constructing and reviewing valuation models and other financial models"
+INCLUDE The Marketing Cloud Corp Dev/M&A Analyst NYC $85-95K LI 4467280737 "0–1 years of investment banking, corporate development, or transaction advisory experience preferred" immediate start
+GRAY Morgan Stanley IB Private Capital Advisory Analyst NYC LI 4466882771 "Up to 2 years of experience in investment banking or capital markets is required"
+GRAY Morgan Stanley IB Technology Analyst NYC/Menlo LI 4454917371 "Up to 1 year of experience in investment banking or capital markets is required" (4 weeks old)
+OUT MS Restricted Securities Associate (Purchase) requires WM branch experience; MS WM Associate (Purchase) requirements not visible, client-service support
+INCLUDE BBVA Debt Advisory Analyst NYC LI 4475445524 no years; "Previous experience with financial models is a plus"; SIE/79 within 6 months; no salary on LI
+OUT RBC Muni Higher Ed requires related FS experience; CIBC EIT min 6 months; BNP sector IB prior IB experience; American Century ABS experience; HSBC RRP experience+SQL; Oxford 2+; Hightower 3+
+INCLUDE SMBC Group Client Onboarding Analyst NYC hybrid LI 4471120673 "Recommended years of experience: 0"
+INCLUDE Mosaic Insurance FP&A Investment Analyst NYC $95-125K LI 4477180864 "Up to 2–3 years of relevant experience in: ..." caveat geared to IB/FP&A background
+OUT Bridgewater Finance Associate Class of 2027; Mercury KYC wants experienced background; Vestwell AML experience; Klarna FCC experienced; Tanya Taylor AP/AR; Hearst accounting/SOX; CBRE journal entries
+OUT Barclays Research senior; Barings RE Debt program Spring 2027 grads; Greystone Master's; CVC Marathon experience; MS FID Muni Master's+Python; SMBC Cash Mgmt BA 3 yrs; Phaxis risk experience; Ives BSA experience; Pelham Berkeley compliance 3-36 months min
+GRAY Libra Solutions (Probate Advance) Underwriter & Legal Analyst, Rye Brook in-person $85-95K + incentive LI 4461673570 no years; probate experience preferred
+OUT Tokio Marine HCC Assoc Specialty Underwriter Chappaqua hourly + requires office work experience (insurance underwriting); USALLIANCE 5+; Bridgewater Portfolio Associate 2027 grads; TalentHop AML remote requires AML experience, staffing; MS Fund Services = fund admin ops; SMBC FX Settlements experience; GUARD underwriting = insurance, out of field
