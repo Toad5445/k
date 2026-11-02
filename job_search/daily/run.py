@@ -60,7 +60,7 @@ def main():
                           "group": group, "auto": dec, "flags": flags, "quotes": quotes, "desc": p["desc"][:9000]})
     os.makedirs(OUT, exist_ok=True)
     json.dump(cands, open(os.path.join(OUT, "candidates.json"), "w"), indent=1)
-    json.dump(seen, open(STATE, "w"))
+    # state/seen.json is a fixed baseline; new ids are saved on the board (out/seen_doc.json, RUNBOOK step 5)
     json.dump({"ids": new_ids, "date": today}, open(os.path.join(OUT, "seen_doc.json"), "w"))
     print(f"read {len(posts)} new postings in {int(time.time() - t0)}s -> {tally}; {len(cands)} need a final read (out/candidates.json)")
 
