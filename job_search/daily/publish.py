@@ -23,11 +23,11 @@ for a in approved:
     doc = dict(key=key, company=c.get("company", ""), title=c.get("title", ""), loc=c.get("loc", ""), salary=c.get("salary", ""),
                exp=a.get("exp", ""), caveat=a.get("caveat", ""), url=c.get("url", ""), posted=c.get("posted", ""),
                group=c.get("group") or "nyc", source=c.get("source", ""), added=today)
-    f = os.path.join(pub, "job-" + docid(a["id"]) + ".json"); json.dump(doc, open(f, "w"))
+    f = os.path.join(pub, "job-" + docid(a["id"]).replace(":", "-") + ".json"); json.dump(doc, open(f, "w"))
     writes.append({"op": "set", "collection": "jobs", "doc_id": docid(a["id"]).replace(":", "-"), "file_path": f})
 for r in red:
     c = cands.get(r["id"], {})
-    f = os.path.join(pub, "red-" + docid(r["id"]) + ".json")
+    f = os.path.join(pub, "red-" + docid(r["id"]).replace(":", "-") + ".json")
     json.dump(dict(company=r.get("company") or c.get("company", ""), title=r.get("title") or c.get("title", ""), reason=r["reason"], added=today), open(f, "w"))
     writes.append({"op": "set", "collection": "red", "doc_id": docid(r["id"]).replace(":", "-"), "file_path": f})
 for i in range(0, len(writes), 50):

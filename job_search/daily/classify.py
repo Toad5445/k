@@ -7,7 +7,7 @@ NUM = r"(?:\d+|zero|one|two|three|four|five|six|seven|eight|nine|ten)"
 WORD = {"zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10}
 YRS = re.compile(r"\b(" + NUM + r")\s*(?:\+|plus)?\s*(?:(?:-|–|—|to)\s*(?:" + NUM + r")\s*\+?\s*)?(?:\(\d+\)\s*)?(?:full[- ]time\s+)?(?:years?|yrs?)\b", re.I)
 MONTHS = re.compile(r"\b(\d+|six|twelve|eighteen)\s*\+?\s*months?\b[^.\n]{0,60}experience", re.I)
-NONEXP = re.compile(r"years? old|of age|founded|in business|ago|year[- ]round|per year|each year|every year|multi[- ]year|this year|since \d{4}|"
+NONEXP = re.compile(r"years? old|of age|founded|years? in business|years? ago|year[- ]round|per year|each year|every year|multi[- ]year|this year|since \d{4}|"
                     r"in a row|anniversary|\bvesting\b|(year|month)s? (program|rotation)|[- ]year (program|rotation|analyst program)|over the (past|last)|"
                     r"\d+ years of (unbroken|history|operation\b|growth)|for (over|more than) \d+ years|track record|sabbatical|"
                     r"years? of (age|service)|tenure with|\d+-year", re.I)
@@ -66,7 +66,12 @@ def experience_lines(desc):
                 continue
             hit = True
             lo = _num(m.group(1))
-            if lo == 0 or lo > 15 or UPTO.search(ctx) or SOFT.search(l) or soft_section:
+            st = max(l.rfind(x, 0, m.start()) for x in (". ", "; ", "•", "·"))
+            en = min([i for i in (l.find(x, m.end()) for x in (". ", "; ", "•", "·")) if i >= 0] or [len(l)])
+            sent = l[st + 1:en]
+            soft_here = SOFT.search(re.sub(r"\b(preferably|ideally|prefer(red)? (in|with|at|within))\b[^,;]*", "", sent))
+            hard_here = re.search(r"minimum|at least|must|required|requires|\bmin\.", sent, re.I) and not re.search(r"not required|preferred", sent, re.I)
+            if lo == 0 or lo > 15 or UPTO.search(sent) or (not hard_here and (soft_here or soft_section)):
                 continue
             floor = lo if floor is None else min(floor, lo)
         mm = MONTHS.search(l)
@@ -93,7 +98,9 @@ def classify(p):
     if C.BAD_LOC.search(loc):
         reasons.append("NJ / Long Island")
     group = None
-    if C.NYC.search(loc):
+    if C.NEAR.search(loc) and not re.search(r"new york, ny|\bnyc\b|new york city", loc, re.I):
+        group = "near"
+    elif C.NYC.search(loc):
         group = "nyc"
     elif C.NEAR.search(loc) or p.get("where") == "near":
         group = "near"
