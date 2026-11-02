@@ -9,7 +9,7 @@ Attach and clone the `Toad5445/k` repo (add_repo with push access, then `git clo
 
 ## 2. Fetch and auto-sort (about 10–20 minutes, unattended)
 ```
-cd /home/user/k/job_search/daily && python3 -m pip install -q requests 2>/dev/null; python3 -I run.py   (takes 5-15 min; run it in the background and wait for it to exit)
+cd /home/user/k/job_search/daily && python3 -m pip install -q requests 2>/dev/null; python3 -I run.py
 ```
 Run it in the background and wait for it to finish. It reads only postings it has never seen before (`state/seen.json`), from:
 - LinkedIn, last 24 hours, Entry level + Full-time, NYC and within ~35 miles of Somers, NY
