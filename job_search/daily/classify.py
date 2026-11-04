@@ -10,10 +10,13 @@ MONTHS = re.compile(r"\b(\d+|six|twelve|eighteen)\s*\+?\s*months?\b[^.\n]{0,60}e
 NONEXP = re.compile(r"years? old|of age|founded|years? in business|years? ago|year[- ]round|per year|each year|every year|multi[- ]year|this year|since \d{4}|"
                     r"in a row|anniversary|\bvesting\b|(year|month)s? (program|rotation)|[- ]year (program|rotation|analyst program)|over the (past|last)|"
                     r"\d+ years of (unbroken|history|operation\b|growth)|for (over|more than) \d+ years|track record|sabbatical|"
-                    r"years? of (age|service)|tenure with|\d+-year", re.I)
+                    r"years? of (age|service)|tenure with|\d+-year|years? of (expertise|exceptional|excellence|experience (serving|helping|providing|delivering))|"
+                    r"(has|have|with|brings?|over|more than) \d+\+? years (of )?(serving|helping|industry|in the industry|leadership|experience (in|serving) (the|our) clients)|"
+                    r"our \d+\+? years|\d+\+? years (strong|young)|(firm|company|organization|we)[^.\n]{0,40}\d+\+? years", re.I)
 UPTO = re.compile(r"\bup to\b|no more than|less than|\bmaximum\b|or fewer|at most|\bunder \d", re.I)
 SOFT = re.compile(r"prefer|a plus|is a plus|nice to have|ideal|desired|desirable|bonus|advantage|beneficial|helpful|not required|"
-                  r"optional|encouraged|welcome|considered|strongly consider|\bno [\w ]{0,15}required", re.I)
+                  r"optional|encouraged|welcome|considered|strongly consider|\bno [\w ]{0,15}required|coursework|internships?|academic|"
+                  r"recent (college |university )?grad|new grad|or equivalent (combination|education)|or (a )?(bachelor|degree)", re.I)
 SOFT_HEAD = re.compile(r"^(preferred|nice to have|bonus|desired|pluses|plus|additional|preferred qualifications|preferred skills|"
                        r"preferred experience|what would be nice|nice-to-haves?|it would be great)", re.I)
 HARD_HEAD = re.compile(r"^(required|requirements|minimum|basic|must|what you('ll)? (need|bring|have)|qualifications|you have|about you|"

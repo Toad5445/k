@@ -9,7 +9,13 @@ LI_KEYWORDS = [
     "KYC analyst", "AML analyst", "compliance analyst", "operations analyst finance", "trading analyst",
     "finance associate", "investment associate", "credit associate", "private equity analyst",
     "real estate finance analyst", "underwriting analyst", "budget analyst", "client service analyst finance",
+    "junior analyst", "entry level finance", "analyst", "associate finance", "underwriter", "corporate development associate",
+    "client service associate", "operations associate", "loan operations", "middle office", "fund operations analyst",
+    "transaction advisory associate", "business analyst finance", "strategy analyst", "pricing analyst", "investor relations analyst",
+    "corporate banking analyst", "commercial banking analyst", "wealth management associate", "merchandise planning analyst",
 ]
+# Seniority filters to search: 2 = Entry level, 3 = Associate (many true entry-level postings are tagged Associate).
+LI_LEVELS = ["2", "3"]
 LI_LOCATIONS = [
     ("nyc", {"location": "New York, New York, United States"}),
     ("near", {"location": "Somers, New York, United States", "distance": "35"}),
@@ -63,18 +69,26 @@ LEVER = ["dadavidson", "arootah", "yieldstreet", "addepar"]
 ASHBY = ["ramp", "mercury", "column", "moderntreasury", "rho", "allocate", "range", "titan", "public", "9fin"]
 
 # ---- Screening vocabulary ----
-TITLE_GOOD = re.compile(r"financ|analyst|credit|treasury|invest|portfolio|risk|capital|bank|valuation|fp&a|kyc|aml|compliance|trad(e|ing)|fund|equity|wealth|asset|underwrit|research|m&a|deal|budget|pricing|strateg", re.I)
+TITLE_GOOD = re.compile(r"financ|analyst|credit|treasury|invest|portfolio|risk|capital|bank|valuation|fp&a|kyc|aml|compliance|trad(e|ing)|fund|equity|wealth|asset|underwrit|research|m&a|deal|budget|pricing|strateg|"
+                        r"associate|underwriter|loan|lending|coverage|transaction|corporate development|middle office|operations|"
+                        r"client service|trust|performance|planner|planning|merchandis|investor relations|reporting|onboarding|settlement|"
+                        r"derivatives|\bfx\b|securities|markets|mortgage|insurance|reinsurance|economic", re.I)
 TITLE_BAD = re.compile(r"senior|\bsr\.?\b|\bvp\b|vice president|director|principal|manager|head of|\blead\b|\bchief\b|engineer|developer|scientist|"
                        r"intern\b|internship|summer|co-?op|2027|2028|accountant|accounting|\btax\b|audit|payroll|bookkeep|billing|"
                        r"receivable|payable|\bii\b|\biii\b|\biv\b|\b[2-5]\b(?!0)|counsel|attorney|paralegal|recruit|nurse|teller|relationship banker|personal banker|client associate|"
                        r"sales|account executive|business development rep|financial (advisor|representative|professional|consultant)|"
                        r"insurance agent|quant|talent (network|community|pool)|insight day|apprentice|fellowship|machine learning|software|data engineer|controller|\bcfo\b|actuar|avp|executive assistant", re.I)
-NYC = re.compile(r"new york|\bnyc\b|manhattan|brooklyn|queens|bronx|staten island", re.I)
+NYC = re.compile(r"new york|\bnyc\b|manhattan|brooklyn|queens|bronx|staten island|jamaica, ny|flushing|long island city|astoria|"
+                 r"forest hills|bayside|jackson heights|elmhurst|corona, ny|ridgewood, ny|woodside|sunnyside, ny|rego park|kew gardens", re.I)
 NEAR = re.compile(r"white plains|purchase|harrison|\brye\b|rye brook|port chester|armonk|elmsford|tarrytown|sleepy hollow|valhalla|hawthorne|"
                   r"mount kisco|bedford|katonah|somers, ny|yorktown|brewster|carmel|mahopac|peekskill|ossining|chappaqua|pleasantville|"
                   r"scarsdale|yonkers|new rochelle|mount vernon|greenwich|stamford|norwalk|darien|new canaan|ridgefield|danbury|"
-                  r"brookfield, ct|bethel|westport|wilton|fishkill|beacon|westchester|fairfield county", re.I)
-BAD_LOC = re.compile(r", nj\b|new jersey|jersey city|hoboken|newark|jericho|melville|hauppauge|garden city|long island|plainview|uniondale|"
-                     r"mineola|hicksville|islandia|bethpage|lake success|westbury|huntington, ny|orangeburg|edgewood|somers point|rio grande|cape may|atlantic city", re.I)
+                  r"brookfield, ct|bethel|westport|wilton|fishkill|beacon|westchester|fairfield county|croton|cortlandt|montrose, ny|buchanan, ny|"
+                  r"briarcliff|ardsley|dobbs ferry|irvington, ny|hastings-on-hudson|bronxville|eastchester|tuckahoe|mamaroneck|larchmont|"
+                  r"pelham|nanuet|nyack|pearl river|suffern|orangeburg, ny|new city, ny|spring valley, ny|west nyack|rockland|"
+                  r"cold spring|garrison|patterson, ny|pawling|hopewell junction|wappingers|poughkeepsie|newburgh|newtown, ct|"
+                  r"new milford, ct|trumbull|shelton|monroe, ct|redding, ct|weston, ct|putnam county|dutchess", re.I)
+BAD_LOC = re.compile(r", nj\b|new jersey|jersey city|hoboken|newark|jericho|melville|hauppauge|garden city|long island(?! city)|plainview|uniondale|"
+                     r"mineola|hicksville|islandia|bethpage|lake success|westbury|huntington, ny|orangeburg, sc|edgewood|somers point|rio grande|cape may|atlantic city", re.I)
 REMOTE = re.compile(r"\bremote\b|work from home|telecommut", re.I)
 NOT_REMOTE = re.compile(r"hybrid|\d days? (a|per) week (in|on)|in[- ]office|on-?site (role|position|requirement)|must be located in", re.I)

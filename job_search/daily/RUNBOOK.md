@@ -16,44 +16,54 @@ Then download what the board already knows, so nothing is read twice. Load the A
 
 Follow `next_cursor` if a result has one. The files land in `board/seen/` and `board/jobs/`, where run.py picks them up.
 
-## 2. Fetch and auto-sort (about 10–20 minutes, unattended)
+## 2. Fetch and auto-sort (about 20–40 minutes, unattended)
 ```
 cd /home/user/k/job_search/daily && python3 -m pip install -q requests 2>/dev/null; python3 -I run.py
 ```
 Run it in the background and wait for it to finish. It reads only postings it has never seen before (`state/seen.json` plus the `board/` files from step 1), from:
-- LinkedIn, last 24 hours, Entry level + Full-time, NYC and within ~35 miles of Somers, NY
+- LinkedIn, last 24 hours, Entry level and Associate level, Full-time, NYC and within ~35 miles of Somers, NY
 - about 70 employers' own career sites (Workday, Greenhouse, Lever, Ashby)
 
 It writes `out/candidates.json`: the postings the rules marked `accept` or `review`. Everything else was rejected
 automatically. It also writes `out/seen_doc.json`: every id this run read, for step 5.
 
-## 3. Final read (the only part that needs judgment)
-Read each candidate's `desc`, `quotes` and `flags`. Approve it only if ALL of these hold:
-- Full-time, salaried, permanent. No internships, temp, contract, hourly-only, or commission pay.
-- Experience: "0–N years", "recent grads", "up to N years", or any years listed as preferred / ideal / a plus are FINE.
-  Reject only if a minimum above 0 is REQUIRED, or prior experience is required without a number.
+## 3. Final read (the only part that needs judgment — take your time)
+Open every candidate in `out/candidates.json` and read its WHOLE `desc` (not just the first few hundred characters:
+requirements are usually near the end). Budget about a minute per candidate; 50 candidates should take ~30–50 minutes,
+and that is expected. Work in batches of ~10 and write decisions as you go.
+
+Default to APPROVE. Reject only when you can quote a specific line that breaks one of these rules:
+- Full-time, salaried, permanent. No internships, temp, contract, part-time, hourly-only, or commission pay.
+- Experience: "0–N years", "recent grads", "up to N years", "N years including internships/coursework", or any years
+  listed as preferred / ideal / a plus are FINE. Reject only if a minimum above 0 is REQUIRED (e.g. "2+ years required",
+  "minimum 1 year", or a plain "2+ years of experience in X" under Requirements), or prior work experience is explicitly
+  required without a number. Company history ("40 years of expertise") is not an experience requirement.
 - Fits a May 2026 graduate: no Class of 2027 programs, 2027 start dates, or "currently enrolled".
-- Finance or finance-adjacent business role. Not pure accounting (AP/AR, staff accountant, tax, audit, bookkeeping,
-  reconciliation-only). Mixed roles are fine with a caveat.
-- Location: NYC, within ~50 minutes' drive of Somers, NY, or remote open to New York residents. No New Jersey or Long Island.
-- No required Python, SQL, Master's, CFA/CPA, second language, or active license (licenses sponsored after hire are fine).
-- Insurance companies are fine for finance roles; insurance or commission SALES roles are not. Staffing-agency posts are fine
-  (caveat: confirm the employer).
-- Not already on the board (the board's `jobs` collection) and not one of these already-seen roles: Paul Weiss; Societe Generale
-  IB/M&A roles; Credit Agricole CIB; Goldman (QIS, Capital Solutions); Stifel; MUFG Rates Trading Assistant; Leargas; NYC OMB;
-  Piper Sandler; Evercore; Somnia; CRP; Deeter; Deckers; 747 Capital; UOB; Secretariat; Port Authority; Capgemini; M2O;
-  Axiom; Citrini; JPMorgan ECM and WM Solutions; Stagwell; LevelUP; Iron Road; Man Group; OTC Markets; CAIS; Welltower;
-  Janebridge; 32BJ; Freepoint; ACX; DLC; (qp); Interactive Brokers; and batch 1's roles in `finance_jobs.md` at the repo root.
+- Finance or finance-adjacent business role (banking, investing, credit, risk, compliance, ops at financial firms,
+  insurance underwriting, FP&A, corporate finance, strategy, real estate finance, merchandise/financial planning).
+  Not pure accounting (AP/AR, staff accountant, tax, audit, bookkeeping, reconciliation-only). Not IT/engineering/data
+  engineering. Mixed roles are fine with a caveat.
+- Location: NYC (all five boroughs), within ~50 minutes' drive of Somers, NY (Westchester, Putnam, Rockland, southern
+  Dutchess, Fairfield County CT), or remote open to New York residents. No New Jersey or Long Island.
+- No required Python, SQL, Master's, CFA/CPA, second language, or active license (preferred / sponsored after hire is fine).
+- Insurance companies are fine for finance roles; insurance or commission SALES roles are not. Staffing-agency posts are
+  fine (caveat: confirm the employer).
+- Not already on the board (`board/jobs/`) — same company AND same title counts as a duplicate even with a different id.
+- Not one of these already-seen roles: Paul Weiss; Societe Generale IB/M&A roles; Credit Agricole CIB; Goldman (QIS,
+  Capital Solutions); Stifel; MUFG Rates Trading Assistant; Leargas; NYC OMB; Piper Sandler; Evercore; Somnia; CRP; Deeter;
+  Deckers; 747 Capital; UOB; Secretariat; Port Authority; Capgemini; M2O; Axiom; Citrini; JPMorgan ECM and WM Solutions;
+  Stagwell; LevelUP; Iron Road; Man Group; OTC Markets; CAIS; Welltower; Janebridge; 32BJ; Freepoint; ACX; DLC; (qp);
+  Interactive Brokers; and batch 1's roles in `finance_jobs.md` at the repo root.
 
 Red flags go on the board's red-flag list, not the job list: insurance-agency "financial representative" roles, commission or
 cold-calling "analyst" roles, AI-training gigs, fake-remote relocation programs (e.g. Revature), and suspicious templated posts.
 
-Write `out/approved.json`:
-```
-[{"id": "<candidate id>", "exp": "<exact experience line quoted, or 'No years stated; ...'>", "caveat": "<short caveat or ''>"}]
-```
-Optional overrides per job: `company`, `title`, `loc` (add drive time for near-Somers jobs, e.g. "Stamford, CT, ~40 min drive"),
-`salary`, `group` (remote / nyc / near). Write `out/redflags.json` as `[{"id": "...", "reason": "..."}]` if there are any.
+Write three files. Every candidate id must be in exactly one of them — publish.py refuses to run otherwise:
+- `out/approved.json`: `[{"id": "<candidate id>", "exp": "<exact experience line quoted, or 'No years stated; ...'>", "caveat": "<short caveat or ''>"}]`
+  Optional overrides per job: `company`, `title`, `loc` (add drive time for near-Somers jobs, e.g. "Stamford, CT, ~40 min drive"),
+  `salary`, `group` (remote / nyc / near).
+- `out/rejected.json`: `[{"id": "...", "reason": "<rule broken + the quoted line>"}]`
+- `out/redflags.json`: `[{"id": "...", "reason": "..."}]` (may be `[]`)
 
 ## 4. Publish to the board
 ```

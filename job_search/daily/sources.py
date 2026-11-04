@@ -36,10 +36,10 @@ def title_ok(t):
 # ---------------- LinkedIn ----------------
 def linkedin(seen, window="r86400", log=print):
     cards = {}
-    for kw in C.LI_KEYWORDS:
+    for kw, lvl in [(k, l) for k in C.LI_KEYWORDS for l in C.LI_LEVELS]:
         for where, lp in C.LI_LOCATIONS:
             for start in range(0, 250, 25):
-                p = {"keywords": kw, "f_E": "2", "f_JT": "F", "f_TPR": window, "sortBy": "DD", "start": start, **lp}
+                p = {"keywords": kw, "f_E": lvl, "f_JT": "F", "f_TPR": window, "sortBy": "DD", "start": start, **lp}
                 r = get("https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?" + urlencode(p))
                 if r is None or r.status_code != 200:
                     break
