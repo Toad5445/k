@@ -77,7 +77,10 @@ TITLE_BAD = re.compile(r"senior|\bsr\.?\b|\bvp\b|vice president|director|princip
                        r"intern\b|internship|summer|co-?op|2027|2028|accountant|accounting|\btax\b|audit|payroll|bookkeep|billing|"
                        r"receivable|payable|\bii\b|\biii\b|\biv\b|\b[2-5]\b(?!0)|counsel|attorney|paralegal|recruit|nurse|teller|relationship banker|personal banker|client associate|"
                        r"sales|account executive|business development rep|financial (advisor|representative|professional|consultant)|"
-                       r"insurance agent|quant|talent (network|community|pool)|insight day|apprentice|fellowship|machine learning|software|data engineer|controller|\bcfo\b|actuar|avp|executive assistant", re.I)
+                       r"insurance agent|quant|talent (network|community|pool)|insight day|apprentice|fellowship|machine learning|software|data engineer|controller|\bcfo\b|actuar|avp|executive assistant|"
+                       r"part[- ]time|seasonal|customer service|store|stock(ing)? (team )?associate|cashier|warehouse|fulfillment|fleet|task associate|"
+                       r"guest service|front of house|backroom|pharmacy|production (associate|planner)|patient|clinical|behavior analyst|bcba|"
+                       r"technical support|desktop support|help ?desk|media (planning|buying|analytics)|(?<!compliance )marketing|events?\b|veterinar|retail associate|sales associate", re.I)
 NYC = re.compile(r"new york|\bnyc\b|manhattan|brooklyn|queens|bronx|staten island|jamaica, ny|flushing|long island city|astoria|"
                  r"forest hills|bayside|jackson heights|elmhurst|corona, ny|ridgewood, ny|woodside|sunnyside, ny|rego park|kew gardens", re.I)
 NEAR = re.compile(r"white plains|purchase|harrison|\brye\b|rye brook|port chester|armonk|elmsford|tarrytown|sleepy hollow|valhalla|hawthorne|"
