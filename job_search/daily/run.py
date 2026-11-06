@@ -36,7 +36,7 @@ def board_seen():
 
 def main():
     args = sys.argv[1:]
-    window = args[args.index("--window") + 1] if "--window" in args else "r86400"
+    window = args[args.index("--window") + 1] if "--window" in args else "r129600"  # 36h; overlap is free (seen ids are skipped)
     seen = Seen(json.load(open(STATE)) if os.path.exists(STATE) else {})
     extra = board_seen()
     for k, v in extra.items():

@@ -14,8 +14,11 @@ LI_KEYWORDS = [
     "transaction advisory associate", "business analyst finance", "strategy analyst", "pricing analyst", "investor relations analyst",
     "corporate banking analyst", "commercial banking analyst", "wealth management associate", "merchandise planning analyst",
 ]
-# Seniority filters to search: 2 = Entry level, 3 = Associate (many true entry-level postings are tagged Associate).
-LI_LEVELS = ["2", "3"]
+# Seniority filter: None = no filter. Many real entry-level postings are tagged "Associate" or "Not Applicable",
+# and LinkedIn has no filter value for "Not Applicable", so we search without one and let the title filter and
+# experience screen do the work.
+LI_LEVELS = [None]
+LI_MAX_RESULTS = 1000  # per keyword and location
 LI_LOCATIONS = [
     ("nyc", {"location": "New York, New York, United States"}),
     ("near", {"location": "Somers, New York, United States", "distance": "35"}),

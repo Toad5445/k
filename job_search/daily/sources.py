@@ -38,20 +38,25 @@ def linkedin(seen, window="r86400", log=print):
     cards = {}
     for kw, lvl in [(k, l) for k in C.LI_KEYWORDS for l in C.LI_LEVELS]:
         for where, lp in C.LI_LOCATIONS:
-            for start in range(0, 250, 25):
-                p = {"keywords": kw, "f_E": lvl, "f_JT": "F", "f_TPR": window, "sortBy": "DD", "start": start, **lp}
-                r = get("https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?" + urlencode(p))
+            # LinkedIn's guest search returns 10 results per page: step by 10 and keep going until a page adds nothing new.
+            for start in range(0, C.LI_MAX_RESULTS, 10):
+                p = {"keywords": kw, "f_JT": "F", "f_TPR": window, "sortBy": "DD", "start": start, **lp}
+                if lvl:
+                    p["f_E"] = lvl
+                r = get("https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?" + urlencode(p), tries=7)
                 if r is None or r.status_code != 200:
+                    log(f"  search stopped early ({kw} / {where} @ {start}): {getattr(r, 'status_code', 'no response')}")
                     break
                 found = re.findall(r'data-entity-urn="urn:li:jobPosting:(\d+)".*?base-search-card__title">\s*(.*?)\s*</h3>.*?'
                                    r'base-search-card__subtitle">.*?>\s*(.*?)\s*</a>.*?job-search-card__location">\s*(.*?)\s*</span>', r.text, re.S)
-                if not found:
-                    break
+                new = [f for f in found if "li:" + f[0] not in cards]
                 for jid, t, c, l in found:
                     cards.setdefault("li:" + jid, dict(id="li:" + jid, source="LinkedIn", title=html.unescape(t),
                                                        company=html.unescape(c), loc=html.unescape(l), where=where,
                                                        url=f"https://www.linkedin.com/jobs/view/{jid}"))
-                time.sleep(0.5)
+                if not found or (start >= 30 and not new):
+                    break
+                time.sleep(0.4)
     todo = [c for k, c in cards.items() if k not in seen and title_ok(c["title"]) and not C.BAD_LOC.search(c["loc"])]
     log(f"LinkedIn: {len(cards)} postings found, {len(todo)} new with a finance title to read")
     out, lock = [], threading.Lock()
