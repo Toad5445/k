@@ -16,12 +16,13 @@ Then download what the board already knows, so nothing is read twice. Load the A
 
 Follow `next_cursor` if a result has one. The files land in `board/seen/` and `board/jobs/`, where run.py picks them up.
 
-## 2. Fetch and auto-sort (about 20–40 minutes, unattended)
+## 2. Fetch and auto-sort (about 45–75 minutes, unattended — this is normal)
 ```
 cd /home/user/k/job_search/daily && python3 -m pip install -q requests 2>/dev/null; python3 -I run.py
 ```
 Run it in the background and wait for it to finish. It reads only postings it has never seen before (`state/seen.json` plus the `board/` files from step 1), from:
-- LinkedIn, last 24 hours, Entry level and Associate level, Full-time, NYC and within ~35 miles of Somers, NY
+- LinkedIn, last 36 hours, all seniority levels (many real entry-level jobs are tagged "Not Applicable"), Full-time,
+  NYC and within ~35 miles of Somers, NY, every result page (not just the first few)
 - about 70 employers' own career sites (Workday, Greenhouse, Lever, Ashby)
 
 It writes `out/candidates.json`: the postings the rules marked `accept` or `review`. Everything else was rejected
@@ -29,8 +30,8 @@ automatically. It also writes `out/seen_doc.json`: every id this run read, for s
 
 ## 3. Final read (the only part that needs judgment — take your time)
 Open every candidate in `out/candidates.json` and read its WHOLE `desc` (not just the first few hundred characters:
-requirements are usually near the end). Budget about a minute per candidate; 50 candidates should take ~30–50 minutes,
-and that is expected. Work in batches of ~10 and write decisions as you go.
+requirements are usually near the end). Budget about a minute per candidate; 100+ candidates can take over an hour,
+and that is expected. Do not skim to save time. Work in batches of ~10 and write decisions as you go.
 
 Default to APPROVE. Reject only when you can quote a specific line that breaks one of these rules:
 - Full-time, salaried, permanent. No internships, temp, contract, part-time, hourly-only, or commission pay.
